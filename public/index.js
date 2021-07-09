@@ -5,6 +5,10 @@ const messages = document.getElementById('messages')
 window.addEventListener("load", () => {
   const username = prompt('Type your name', 'Anonym')
 
+  if (!username) {
+    return
+  }
+
   const socket = io();
 
   form.addEventListener('submit', (event) => {
