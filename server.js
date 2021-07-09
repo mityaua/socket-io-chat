@@ -10,10 +10,14 @@ const server = require('http').createServer(app);
 // Сокеты
 const io = require('socket.io')(server);
 io.on('connection', (socket) => {
-  console.log('New client connected');
+  console.log('User connected');
 
   socket.on('CHAT_MESSAGE', ({ message, username }) => {
     io.emit('CHAT_UPDATE', { message, username })
+  })
+
+  socket.on("disconnect", () => {
+    console.log("User disconnected")
   })
 });
 
