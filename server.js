@@ -22,13 +22,7 @@ io.on('connection', (socket) => {
 });
 
 // Логер + статика
-app.use(morgan('tiny'))
-app.use(express.static("public"))
-
-// Тестовый маршрут для http сервера
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+app.use([morgan('tiny'), express.static("public")])
 
 // Слушаем порт
 server.listen(port, () => {
